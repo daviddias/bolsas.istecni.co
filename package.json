@@ -1,0 +1,24 @@
+{
+  "name": "scholarshipsIST",
+  "version": "0.0.0",
+  "description": "Know all the IST scholarships as soon as they are released",
+  "main": "index.js",
+  "dependencies": {
+    "soupselect": "~0.2.0",
+    "htmlparser": ">= 1.6.2",
+    "nodeunit": ">= 0.3.0",
+    "hapi": "~1.8.1",
+    "handlebars": "~1.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": "",
+  "keywords": [
+    "ist",
+    "scholarships"
+  ],
+  "author": "David Dias",
+  "license": "MIT"
+}
