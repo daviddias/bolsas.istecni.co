@@ -2,7 +2,7 @@
   "name": "scholarshipsIST",
   "version": "0.0.0",
   "description": "Know all the IST scholarships as soon as they are released",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "soupselect": "~0.2.0",
     "htmlparser": ">= 1.6.2",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node index.js"
+    "test": "node server/server.js"
   },
   "repository": "",
   "keywords": [
