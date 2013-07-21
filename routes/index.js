@@ -1,12 +1,11 @@
-/*
-  Index Route
-*/
+var indexHandler = require('./../controllers/index.js')
 
-var indexRoute = {
-    handler: function (request) {
-      // Render the view with the custom greeting
-      request.reply.view('index.html', { greeting: 'Hello world' });
-    }
-};
+var index = {
+  method: 'GET',
+  path: '/',
+  config: {
+  	handler: indexHandler
+  }
+}
 
-module.exports = indexRoute;
+module.exports = index
