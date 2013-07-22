@@ -7,12 +7,14 @@ var Hapi = require('hapi')
 
 fetch.run();
 
-var server = new Hapi.Server(8080, options);
+var server = new Hapi.Server(8090, options);
+
 
 // Add the routes
-server.route([ indexRoute
+server.route([ staticAssets 
+             , indexRoute
              , expiredRoute
-             , staticAssets
+             
 ]);
 
 // Error logging 

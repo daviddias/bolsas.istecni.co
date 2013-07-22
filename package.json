@@ -9,7 +9,8 @@
     "nodeunit": ">= 0.3.0",
     "hapi": "~1.8.1",
     "handlebars": "~1.0.12",
-    "mongoose": "~3.6.13"
+    "mongoose": "~3.6.13",
+    "mailchimp": "~1.1.0"
   },
   "devDependencies": {},
   "scripts": {

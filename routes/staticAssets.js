@@ -4,7 +4,7 @@ var staticAssets = {
   config : {
   	handler: {
       directory: { 
-      	path: '/public', 
+      	path: 'public', 
       	listing: false, 
       	index: true }
     }
