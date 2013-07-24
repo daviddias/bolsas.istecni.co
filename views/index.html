@@ -17,55 +17,52 @@
     <header>
         <!-- Welcome Pitch -->
         <div class="row">
-          <div class="large-8 small-12 small-centered large-centered columns">
+          <div class="large-12 columns">
             <img src="/img/headerbanner.png" align="center"></img>
           </div>  
+          <hr />
         </div>
-        <hr />
     </header>
-      
-
-
 
     <nav>
         <div class="row">
-            <div class="large-6 small-6 small-centered large-centered columns">
+            <div class="small-centered large-centered columns">
                 <div class="row">
                     <div class="large-4 small-4 columns">
-                        <a href=""><h6 class="" align="center">Activas</h6></a>
+                        <a href=""><h6 class="" align="center">Bolsas Activas</h6></a>
                     </div>
                     <div class="large-4 small-4 columns">
-                        <a href="/"><h6 class="" align="center">Passadas  </h6></a>
+                        <a href="/"><h6 class="" align="center">Bolsas Passadas</h6></a>
                     </div>
                     <div class="large-4 small-4 columns">
                         <a href="#footer"><h6 class="" align="center">Sê notificado</h6></a>
                     </div>
-
-                    
                 </div> 
             </div>  
         </div>     
         <hr />
     </nav>    
     
-    
     <section>
       <!-- Scholarship List -->
-      {{#each scholarships}}
-        <div class="row">
-          <div class="large-12 columns">
-            <h6>{{field}}</h6>
-            <p>
-            <a href="{{link}}">{{id}}</a><br /> 
-            Vagas = {{slots}} <br />
-            {{holder}} <br />
-            {{type}} <br />
-            Abertura {{releaseDate}} <br />
-            Fecho {{closeDate}}</p>
-            <hr />
-          </div>
-        </div>         
-      {{/each}}  
+      <div class="row">
+          <ul class="large-block-grid-3">
+              {{#each scholarships}}
+              <li>
+              <div class="col">
+                  <h6>{{field}}</h6>
+                  <p>
+                  <a href="{{link}}">{{id}}</a><br /> 
+                  Vagas = {{slots}} <br />
+                  {{holder}} <br />
+                  {{type}} <br />
+                  Abertura {{releaseDate}} <br />
+                  Fecho {{closeDate}}</p>
+                  </col>
+              </li>
+              {{/each}}  
+          </ul>
+      </div>
     </section>
 
     <footer id="footer">
@@ -107,22 +104,14 @@
         <div class="large-4 small-4 columns">
             <a href="/"><h6 class="" align="">Twitter</h6></a>
         </div>
-
       </div>
-        
     </footer>
-    
-    
-    
-    
-    
 
   <script>
   document.write('<script src=' +
   ('__proto__' in {} ? '/js/vendor/zepto' : '/js/vendor/jquery') +
   '.js><\/script>')
   </script>
-  
   <script src="/js/foundation.min.js"></script>
   <!--
   <script src="/js/foundation/foundation.js"></script>
