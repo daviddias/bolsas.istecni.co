@@ -1,11 +1,9 @@
 var Hapi = require('hapi')
   , options = require('./options.js')
-  , fetch = require('./controllers/fetch')
   , indexRoute = require('./routes/index.js')
   , expiredRoute = require('./routes/expired.js')
   , staticAssets = require('./routes/staticAssets.js')
-
-fetch.run();
+  , scheduler = require('./controllers/cron.js')
 
 var server = new Hapi.Server(8090, options);
 
@@ -13,8 +11,7 @@ var server = new Hapi.Server(8090, options);
 // Add the routes
 server.route([ staticAssets 
              , indexRoute
-             , expiredRoute
-             
+             , expiredRoute         
 ]);
 
 // Error logging 
@@ -30,3 +27,7 @@ server.start(function () {
   console.log("Server started at " + server.info.uri);
 });
 
+
+// Start the scheduler
+scheduler.fetchDaily()
+scheduler.mailWeekly()
