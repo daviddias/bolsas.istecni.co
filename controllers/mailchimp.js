@@ -16,17 +16,21 @@ var createNewsletter = function() {
             subject: 'bolsastecni.co - Novas bolsas',
             from_email: 'hello@bolsastecni.co',
             from_name: 'bolsastecni.co',
-            to_name: 'subscribers'
+            to_name: 'subscribers',
+            template_id: 20497
         },
         content: {
-            html: '<h1>bolsastecni.co teste</h1>',
-            text: 'bolsastecni.co teste'
+            html_std_content00: '<h3>bolsastecni.co</h3>',
+            html_std_preheader_content: 'bolsastecni.co - Novas Bolsas',
+            text: 'bolsastecni.co - Novas Bolsas'
         }
     };
 
     api.campaignCreate(apioptions, function(error, data) {
-        if(error)
+        if(error){
             console.log("Error contacting MailChimp Api!");
+            console.log(error.message);
+        }
         else {
             console.log(JSON.stringify(data));
             api.campaignSendNow({cid: data}, function(error, data) {
