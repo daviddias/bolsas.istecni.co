@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var ObjectId = require('mongoose').Types.ObjectId;
 var ScholarshipModel = require('./models/Scholarship');
 var InactiveScholarshipModel = require('./models/InactiveScholarship');
 
@@ -36,7 +37,7 @@ var removeInactiveScholarships = function() {
         scholarships.forEach(function(scholarship) {
             if(scholarship.closeDate < new Date()){
 
-                ScholarshipModel.remove({ id: scholarship.id}, function(err, scholar) {
+                ScholarshipModel.remove({ scholarid: scholarship.scholarid}, function(err, scholar) {
                     if(err) console.log(err);
                 });
 
@@ -49,19 +50,21 @@ var removeInactiveScholarships = function() {
 };
 
 var saveScholarship = function (scholarship) {
-    ScholarshipModel.findOne({ id: scholarship.id }, function (err, isThere) {
+
+    var releaseDate = scholarship.releaseDate.split('.');
+    var closeDate = scholarship.closeDate.split('.');
+
+    ScholarshipModel.findOne({ id: scholarship.scholarid + "." + releaseDate[2]}, function (err, isThere) {
 
         if (!isThere){
-
-            var releaseDate = scholarship.releaseDate.split('.');
-            var closeDate = scholarship.closeDate.split('.');
 
             var scholarshipToMongo = new ScholarshipModel({
                 slots: parseInt(scholarship.slots, 10),
                 type: scholarship.type,
                 holder: scholarship.holder,
                 link: scholarship.link,
-                id: scholarship.id,
+                id: scholarship.scholarid + "." + releaseDate[2],
+                scholarid: scholarship.scholarid,
                 field: scholarship.field,
                 releaseDate: new Date(releaseDate[2], parseInt(releaseDate[1],10)-1, releaseDate[0]),
                 closeDate: new Date(closeDate[2], parseInt(closeDate[1],10)-1, closeDate[0])
