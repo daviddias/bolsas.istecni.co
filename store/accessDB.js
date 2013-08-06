@@ -30,86 +30,58 @@ var getAllScholarships = function (callback) {
 };
 
 
-var moveInactiveScholarship = function(scholarship) {
+var removeInactiveScholarships = function() {
 
-    console.log("Move inactive scholarship!");
+    ScholarshipModel.find(function(err, scholarships){
+        scholarships.forEach(function(scholarship) {
+            if(scholarship.closeDate < new Date()){
 
-    var releaseDate = scholarship.releaseDate.split('.');
-    var closeDate = scholarship.closeDate.split('.');
-
-    var inactiveScholarship  = new InactiveScholarshipModel({
-        slots: parseInt(scholarship.slots, 10),
-        type: scholarship.type,
-        holder: scholarship.holder,
-        link: scholarship.link,
-        id: scholarship.id,
-        field: scholarship.field,
-        releaseDate: new Date(releaseDate[2], parseInt(releaseDate[1],10)-1, releaseDate[0]),
-        closeDate: new Date(closeDate[2], parseInt(closeDate[1],10)-1, closeDate[0])
-    });
-
-    ScholarshipModel.findOne({ id: scholarship.id}, function(err, scholarship) {
-        inactiveScholarship.save(function(err, scholarship) {
-            if(err)
-                console.log(err);
-            else
-                ScholarshipModel.where('id').equals(scholarship.id).remove(function(err,info) {
-                    if(err)
-                        console.log("Remove not sucessful!");
+                ScholarshipModel.remove({ id: scholarship.id}, function(err, scholar) {
+                    if(err) console.log(err);
                 });
+
+                new InactiveScholarshipModel(scholarship).save(function(err, scholar) {
+                    if(err) console.log(err);
+                });
+            }
         });
     });
 };
 
 var saveScholarship = function (scholarship) {
-  ScholarshipModel.findOne({ id: scholarship.id }, function (err, isThere) {
+    ScholarshipModel.findOne({ id: scholarship.id }, function (err, isThere) {
 
-    var releaseDate = scholarship.releaseDate.split('.');
-    var closeDate = scholarship.closeDate.split('.');
+        if (!isThere){
 
-    console.log("");
-    console.log(scholarship.id);
+            var releaseDate = scholarship.releaseDate.split('.');
+            var closeDate = scholarship.closeDate.split('.');
 
-    if (!isThere){
+            var scholarshipToMongo = new ScholarshipModel({
+                slots: parseInt(scholarship.slots, 10),
+                type: scholarship.type,
+                holder: scholarship.holder,
+                link: scholarship.link,
+                id: scholarship.id,
+                field: scholarship.field,
+                releaseDate: new Date(releaseDate[2], parseInt(releaseDate[1],10)-1, releaseDate[0]),
+                closeDate: new Date(closeDate[2], parseInt(closeDate[1],10)-1, closeDate[0])
+            });
 
-    console.log("Dont exist!");
-
-    var scholarshipToMongo = new ScholarshipModel({
-        slots: parseInt(scholarship.slots, 10),
-        type: scholarship.type,
-        holder: scholarship.holder,
-        link: scholarship.link,
-        id: scholarship.id,
-        field: scholarship.field,
-        releaseDate: new Date(releaseDate[2], parseInt(releaseDate[1],10)-1, releaseDate[0]),
-        closeDate: new Date(closeDate[2], parseInt(closeDate[1],10)-1, closeDate[0])
-    });
-
-    scholarshipToMongo.save(function (err, scholarship){
-        if(err)
-            console.log(err);
-    });
-
-    }else{
-        console.log("Already exists!");
-        console.log(new Date());
-        console.log(new Date(closeDate[2], closeDate[1], closeDate[0]));
-
-        if(new Date(closeDate[2], parseInt(closeDate[1],10)-1, closeDate[0]) < new Date()) {
-            console.log("Inactive Scholarship!");
-            moveInactiveScholarship(scholarship);
+            scholarshipToMongo.save(function (err, scholarship){
+                if(err)
+                    console.log(err);
+            });
         }
-    }
-  });
+    });
 };
 
 //just one note: var date =new Date(79,5,24) YY,MM,DD
 
 module.exports = {
-  getScholarshipByID : getScholarshipByID,
-  getAllScholarships : getAllScholarships,
-  saveScholarship : saveScholarship,
-  moveInactiveScholarship: moveInactiveScholarship
+  getScholarshipByID: getScholarshipByID,
+  getAllScholarships: getAllScholarships,
+  saveScholarship: saveScholarship,
+  removeInactiveScholarships: removeInactiveScholarships
 };
 
 
