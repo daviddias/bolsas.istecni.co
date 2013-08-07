@@ -30,6 +30,13 @@ var getAllScholarships = function (callback) {
   });
 };
 
+var getAllInactiveScholarships = function (callback) {
+  InactiveScholarshipModel.find({}, function (err, allDocs) {
+    if(err) console.log(err);
+    callback(allDocs);
+  });
+};
+
 
 var removeInactiveScholarships = function() {
 
@@ -83,6 +90,7 @@ var saveScholarship = function (scholarship) {
 module.exports = {
   getScholarshipByID: getScholarshipByID,
   getAllScholarships: getAllScholarships,
+  getAllInactiveScholarships: getAllInactiveScholarships,
   saveScholarship: saveScholarship,
   removeInactiveScholarships: removeInactiveScholarships
 };
