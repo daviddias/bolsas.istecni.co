@@ -29,7 +29,7 @@ function parseScholarships(html) {
             type: scholarship[1],
             holder: scholarship[2],
             link: scholarship[3],
-            id: scholarship[4],
+            scholarid: scholarship[4],
             field: scholarship[5],
             releaseDate: scholarship[6],
             closeDate: scholarship[7]
@@ -52,34 +52,36 @@ function parseScholarships(html) {
 }
 
 var fetch = {
-  run : function () {
-    var options = {
-      hostname: 'drh.ist.utl.pt',
-      port: 80,
-      path: '/bolseiros/recrutamento-bolseiros/',
-      method: 'GET'
-    };
+    run: function () {
+        var options = {
+            hostname: 'drh.ist.utl.pt',
+            port: 80,
+            path: '/bolseiros/recrutamento-bolseiros/',
+            method: 'GET'
+        };
 
-    var req = http.request(options, function (res) {
-      res.setEncoding('utf8');
+        var req = http.request(options, function (res) {
+            res.setEncoding('utf8');
 
-      var html = "";
-      res.on('data', function (chunk) {
-        //console.log("Got the HTML");
-        html = html + chunk;
-      });
+            var html = "";
+            res.on('data', function (chunk) {
+                //console.log("Got the HTML");
+                html = html + chunk;
+            });
 
-      res.on('end', function () {
-        parseScholarships(html);
-      });
-    });
+            res.on('end', function () {
+                parseScholarships(html);
+            });
+        });
 
-    req.on('error', function (e) {
-      console.log('problem with request: ' + e.message);
-    });
+        req.on('error', function (e) {
+            console.log('problem with request: ' + e.message);
+        });
 
-    req.end();
-  }
+        req.end();
+    },
+
+    cleanInactive: accessDB.removeInactiveScholarships
 };
 
 

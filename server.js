@@ -33,3 +33,4 @@ server.start(function () {
 scheduler.fetchDaily()
 scheduler.mailWeekly()
 fetch.run()
+fetch.cleanInactive()
