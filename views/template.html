@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/foundation.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <script src="/js/vendor/custom.modernizr.js"></script>
 </head>
 <body>
@@ -22,9 +23,7 @@
           <!-- Title Area -->
           <li class="name">
             <h1>
-              <a href="http://bolsastecni.co">
-                bolsatecni.co
-              </a>
+              <a href="http://bolsastecni.co"><img src="/img/logo.png" height="90px" width="150px"></a>
             </h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
@@ -37,18 +36,6 @@
             <li><a href="#signup">Sê notificado</a></li>
             <li><a href="#">Sabe mais</a></li>
           </ul>
-
-          <ul class="right">
-            <li class="search">
-              <form>
-                <input type="search">
-              </form>
-            </li>
-
-            <li class="has-button">
-              <a class="small button" href="#">Pesquisa</a>
-            </li>
-          </ul>
         </section>
     </nav>
     <!-- End Navigation -->
@@ -59,17 +46,6 @@
 
   <div class="row">
     <div class="large-12 columns">
-
-    <!-- Desktop Slider -->
-      <div class="hide-for-small">
-        <div id="featured" data-orbit>
-              <img src="/img/slider1.png" alt="slide image">
-              <img src="http://placehold.it/1000x250&text=Slide Image 2" alt="slide image">
-              <img src="http://placehold.it/1000x250&text=Slide Image 3" alt="slide image">
-          </div>
-        </div>
-    <!-- End Desktop Slider -->
-
 
     <!-- Mobile Header -->
     <div class="row">
@@ -85,51 +61,24 @@
   <div class="row">
     <div class="large-12 columns">
     <!-- Thumbnails -->
-          <ul class="large-block-grid-4">
+          <ul class="large-block-grid-3">
               {{#each scholarships}}
               <li>
               <div class="col">
                   <h6>{{field}}</h6>
                   <p>
-                  <a href="{{link}}">{{scholarid}}</a><br /> 
-                  Vagas = {{slots}} <br />
+                  <a href="{{link}}" class="button small secondary">{{scholarid}}</a><br /> 
+                  <strong>Vagas = {{slots}}</strong> <br />
                   {{holder}} <br />
                   {{type}} <br />
-                  Abertura {{releaseDate}} <br />
-                  Fecho {{closeDate}}</p>
-                  </col>
+                  Abertura: {{releaseDate}} <br />
+                  Fecho: {{closeDate}}</p>
+                  </div>
               </li>
               {{/each}}  
           </ul>
     </div>
   </div>
-
-<!--         
-       <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
-        </div>
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
-        </div>
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
-        </div>
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
-        </div> -->
-
-    <!-- End Thumbnails -->
-
-  <!-- </dizv> -->
-
-
 
   <div class="row">
     <div class="large-12 columns">
@@ -143,9 +92,8 @@
           <div class="row">
           <div class="large-12 small-12 columns">
 
-            <h4>Contribui!</h4><hr/>
-            <h5 class="subheader"> O bolsastecni.co foi criado por dois alunos(malucos) do IST que queriam um 'pet project' para meter me prática conhecimentos que iam desenvolvendo por si, o resultado foi um serviço para a comunidade de estudantes, <a href="CóDIGO NO GITHUB">totalmente aberto</a>, disponível para qualquer contribuição.
-            </h5>
+            <h6>Contribui!</h6><hr/>
+            <h6 class="subheader"> O bolsastecni.co foi criado por dois alunos(malucos) do IST que queriam um 'pet project' para colocar em prática conhecimentos que iam desenvolvendo por si. O resultado foi um serviço para a comunidade de estudantes, <a href="CóDIGO NO GITHUB">totalmente aberto</a>, disponível para qualquer contribuição.</h6>
 
           <div class="show-for-small" align="center">
             <a href="#" class="small radius button">adas</a><br>
@@ -168,10 +116,7 @@
           <div class="row" id="signup">
             <div class="large-6 columns">
               <!-- Begin MailChimp Signup Form -->
-              <link href="http://cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
-              <style type="text/css">
-                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-              </style>
+              <h6>Subscrever</h6>
               <div id="mc_embed_signup">
                 <form action="http://bolsastecni.us7.list-manage.com/subscribe/post?u=b073f024fc95d11adc49d7bdf&amp;id=0cd7be3684" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                   
@@ -188,7 +133,7 @@
                     <div id="mce-responses" class="clear">
                       <div class="response" id="mce-error-response" style="display:none"></div>
                       <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>  <div class="clear"><input type="submit" value="Subscrever" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                    </div>  <div class="clear"><input type="submit" value="Subscrever" name="subscribe" id="mc-embedded-subscribe" class="button small secondary"></div>
                 </form>
               </div>
               <!--End mc_embed_signup-->
