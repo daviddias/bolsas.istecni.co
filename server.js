@@ -4,6 +4,7 @@ var Hapi = require('hapi')
   , expiredRoute = require('./routes/expired.js')
   , staticAssets = require('./routes/staticAssets.js')
   , scheduler = require('./controllers/cron.js')
+  , fetch = require('./controllers/fetch.js')
 
 var server = new Hapi.Server(8090, options);
 
@@ -31,3 +32,5 @@ server.start(function () {
 // Start the scheduler
 scheduler.fetchDaily()
 scheduler.mailWeekly()
+fetch.run()
+fetch.cleanInactive()

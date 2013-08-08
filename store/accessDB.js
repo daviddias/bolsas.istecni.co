@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
+var ObjectId = require('mongoose').Types.ObjectId;
 var ScholarshipModel = require('./models/Scholarship');
+var InactiveScholarshipModel = require('./models/InactiveScholarship');
 
 
 // Connect to DB
@@ -12,63 +14,6 @@ db.once('open', function () {
   console.log("Connected Successfully to DB");
 });
 
-
-/*
-var dummyData = {
-  scholarships :
-  [
-    {
-      "id" : "BL101", //Edital
-      "slots" : 2,
-      "type" : "introToResearch",
-      "holder" : "Prof. John",
-      "field" : "Computer Science",
-      "releaseDate" : "12-02-13",
-      "closeDate" : "17-02-13",
-      "link" : "http://example.com"
-    },
-    {
-      "id" : "BL102", //Edital
-      "slots" : 2,
-      "type" : "introToResearch",
-      "holder" : "Prof. Mario",
-      "field" : "Computer Science",
-      "releaseDate" : "12-02-13",
-      "closeDate" : "17-02-13",
-      "link" : "http://example.com"
-    },
-    {
-      "id" : "BL103", //Edital
-      "slots" : 1,
-      "type" : "introToResearch",
-      "holder" : "Prof. Maria",
-      "field" : "Computer Science",
-      "releaseDate" : "12-02-13",
-      "closeDate" : "17-02-13",
-      "link" : "http://example.com"
-    },
-    {
-      "id" : "BL104", //Edital
-      "slots" : 3,
-      "type" : "introToResearch",
-      "holder" : "Prof. Rodrigo",
-      "field" : "Management",
-      "releaseDate" : "12-02-13",
-      "closeDate" : "17-02-13",
-      "link" : "http://example.com"
-    },
-    {
-      "id" : "BL105", //Edital
-      "slots" : 1,
-      "type" : "introToResearch",
-      "holder" : "Prof. Rogalski",
-      "field" : "Quimics",
-      "releaseDate" : "12-02-13",
-      "closeDate" : "17-02-13",
-      "link" : "http://example.com"
-    }
-]};
-*/
 
 // Module methods
 var getScholarshipByID = function (id) {
@@ -85,40 +30,69 @@ var getAllScholarships = function (callback) {
   });
 };
 
+var getAllInactiveScholarships = function (callback) {
+  InactiveScholarshipModel.find({}, function (err, allDocs) {
+    if(err) console.log(err);
+    callback(allDocs);
+  });
+};
 
+
+var removeInactiveScholarships = function() {
+
+    ScholarshipModel.find(function(err, scholarships){
+        scholarships.forEach(function(scholarship) {
+            if(scholarship.closeDate < new Date()){
+
+                ScholarshipModel.remove({ scholarid: scholarship.scholarid}, function(err, scholar) {
+                    if(err) console.log(err);
+                });
+
+                new InactiveScholarshipModel(scholarship).save(function(err, scholar) {
+                    if(err) console.log(err);
+                });
+            }
+        });
+    });
+};
 
 var saveScholarship = function (scholarship) {
-  ScholarshipModel.findOne({ id: scholarship.id }, function (isThere) {
 
-    if (!isThere){
-      var releaseDate = scholarship.releaseDate.split('.');
-      var closeDate = scholarship.closeDate.split('.');
+    var releaseDate = scholarship.releaseDate.split('.');
+    var closeDate = scholarship.closeDate.split('.');
 
-      var scholarshipToMongo = new ScholarshipModel({
-        slots: parseInt(scholarship.slots, 10),
-        type: scholarship.type,
-        holder: scholarship.holder,
-        link: scholarship.link,
-        id: scholarship.id,
-        field: scholarship.field,
-        releaseDate: new Date(releaseDate[2], releaseDate[1], releaseDate[0]),
-        closeDate: new Date(closeDate[2], closeDate[1], closeDate[0])
-      });
+    ScholarshipModel.findOne({ id: scholarship.scholarid + "." + releaseDate[2]}, function (err, isThere) {
 
-      scholarshipToMongo.save(function (err, scholarship){
-      //  console.log(scholarship.id);
-      });
+        if (!isThere){
 
-    }
-  });
+            var scholarshipToMongo = new ScholarshipModel({
+                slots: parseInt(scholarship.slots, 10),
+                type: scholarship.type,
+                holder: scholarship.holder,
+                link: scholarship.link,
+                id: scholarship.scholarid + "." + releaseDate[2],
+                scholarid: scholarship.scholarid,
+                field: scholarship.field,
+                releaseDate: new Date(releaseDate[2], parseInt(releaseDate[1],10)-1, releaseDate[0]),
+                closeDate: new Date(closeDate[2], parseInt(closeDate[1],10)-1, closeDate[0])
+            });
+
+            scholarshipToMongo.save(function (err, scholarship){
+                if(err)
+                    console.log(err);
+            });
+        }
+    });
 };
 
 //just one note: var date =new Date(79,5,24) YY,MM,DD
 
 module.exports = {
-  getScholarshipByID : getScholarshipByID,
-  getAllScholarships : getAllScholarships,
-  saveScholarship : saveScholarship
+  getScholarshipByID: getScholarshipByID,
+  getAllScholarships: getAllScholarships,
+  getAllInactiveScholarships: getAllInactiveScholarships,
+  saveScholarship: saveScholarship,
+  removeInactiveScholarships: removeInactiveScholarships
 };
 
 
