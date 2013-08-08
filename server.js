@@ -1,5 +1,5 @@
 var Hapi = require('hapi')
-  , options = require('./options.js')
+  , options = require('./options.js') 
   , indexRoute = require('./routes/index.js')
   , expiredRoute = require('./routes/expired.js')
   , staticAssets = require('./routes/staticAssets.js')
