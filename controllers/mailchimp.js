@@ -23,7 +23,7 @@ var createCampaign = function () {
                     })
 }
 
-createCampaign()
+// createCampaign()
 
 // api.lists(['list_id','list_name'], function(err, result) {
 //   console.log(result)

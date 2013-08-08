@@ -24,6 +24,9 @@
     "scholarships",
     "bolsas"
   ],
-  "author": "David Dias",
+  "author": [
+    "David Dias <daviddias.p@gmail.com>",
+    "Nuno Nogueira <nunofmn@gmail.com>"
+  ],
   "license": "MIT"
 }

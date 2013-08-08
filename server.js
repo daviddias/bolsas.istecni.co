@@ -6,7 +6,7 @@ var Hapi = require('hapi')
   , scheduler = require('./controllers/cron.js')
   , fetch = require('./controllers/fetch.js')
 
-var server = new Hapi.Server(8090, options);
+var server = new Hapi.Server(8070, options);
 
 
 // Add the routes
