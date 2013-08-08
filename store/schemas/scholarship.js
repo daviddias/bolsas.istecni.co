@@ -6,6 +6,7 @@ var ScholarshipSchema = new mongoose.Schema({
   holder: String,
   link: String,
   id: {type: String, unique: true},
+  scholarid: String,
   field: String,
   releaseDate: Date,
   closeDate: Date
