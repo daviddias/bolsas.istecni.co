@@ -5,7 +5,11 @@
  *}
  */
 
+.top-bar {
+    margin: 10px 0px 0px 0px;
+}
+
 .col p {
-    font-size: 13px;
+    font-size: 12px;
 }
 
