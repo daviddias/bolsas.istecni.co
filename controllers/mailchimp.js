@@ -1,9 +1,9 @@
 var MailChimpAPI = require('mailchimp').MailChimpAPI
-  , env = require('./../env.js').mailchimp;
+  , apiKey = require('./../env.js').mailchimp;
 
 //ID OF LIST TO USE 0cd7be3684
 try {
-  var api = new MailChimpAPI(env.mailchimp, { version : '1.3', secure : false });
+  var api = new MailChimpAPI(apiKey, { version : '1.3', secure : false });
 } catch (error) {
   console.log(error.message);
 }
