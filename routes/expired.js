@@ -1,11 +1,11 @@
-var expiredHandler = require('./../controllers/expired.js')
+var expiredHandler = require('./../controllers/expired.js');
 
 var expired = {
   method: 'GET',
   path: '/past',
   config: {
-  	handler: expiredHandler
+    handler: expiredHandler
   }
-}
+};
 
-module.exports = expired
+module.exports = expired;

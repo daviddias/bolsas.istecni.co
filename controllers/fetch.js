@@ -1,15 +1,14 @@
 var http = require('http');
-var htmlparser = require("htmlparser");
+var htmlparser = require('htmlparser');
 var select = require('soupselect').select;
-var inspect = require('util').inspect;
 var accessDB = require('./../store/accessDB');
 
 function parseScholarships(html) {
   var scholarshipList = [];
   var handler = new htmlparser.DefaultHandler(function (err, html) {
-    if (err) { console.log("Error: " + err);
+    if (err) { console.log('Error: ' + err);
     } else {
-      var tbody = select(html, 'tbody');
+      // var tbody = select(html, 'tbody');
       var allRows = select(html, 'tr');
       allRows.forEach(function (row) {
         var scholarship = [];
@@ -17,8 +16,8 @@ function parseScholarships(html) {
 
         columns.forEach(function (column) {
           if(scholarship.length === 3){
-            scholarship.push(column.children[0].raw.split("\"")[1]);
-            scholarship.push(column.children[0].raw.split("\"")[1].split("/")[6].split(".")[0]);
+            scholarship.push(column.children[0].raw.split('\"')[1]);
+            scholarship.push(column.children[0].raw.split('\"')[1].split('/')[6].split('.')[0]);
           }else {
             scholarship.push(column.children[0].raw);
           }
@@ -63,7 +62,7 @@ var fetch = {
         var req = http.request(options, function (res) {
             res.setEncoding('utf8');
 
-            var html = "";
+            var html = '';
             res.on('data', function (chunk) {
                 //console.log("Got the HTML");
                 html = html + chunk;

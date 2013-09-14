@@ -9,5 +9,5 @@ var staticAssets = {
       	index: true }
     }
   }
-}
-module.exports = staticAssets
+};
+module.exports = staticAssets;
