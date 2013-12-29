@@ -44,11 +44,14 @@ It all started....
 * [MongoDB](http://www.mongodb.org/)
 * [mongoosejs](http://mongoosejs.com/)
 * [The Little MongoDB Book](http://openmymind.net/mongodb.pdf)
+* [MongoDB basics](http://www.talentbuddy.co/set/5266e2c04af0110af3835886)
 
 
 ### Angularjs
 * [angular.js](http://angularjs.org/)
 * [angularjs fundamental in 60 minutes](http://fastandfluid.com/publicdownloads/AngularJSIn60MinutesIsh_DanWahlin_May2013.pdf)
+* [egghead - tutorial videos](https://egghead.io/)
+* [angular.js, learn to build modern web apps](http://www.thinkster.io/pick/GUIDJbpIie/angularjs-tutorial-learn-to-build-modern-web-apps)
 
 
 ### Twitter bootstrap
