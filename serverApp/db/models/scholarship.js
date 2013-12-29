@@ -14,7 +14,7 @@ var scholarshipSchema = new mongoose.Schema({
 });
 
 scholarshipSchema.statics.findByScholarshipId = function (scholarshipId, cb) {
-  this.find({ id: botId }, cb);
+  this.find({ id: scholarshipId }, cb);
 };
 
 scholarshipSchema.statics.findAll = function (cb) {
