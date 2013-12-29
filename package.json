@@ -1,5 +1,5 @@
 {
-  "name": "bolsastecni.co",
+  "name": "bolsas.istecni.co",
   "version": "0.1.0",
   "description": "Know all the IST scholarships as soon as they are released",
   "main": "server.js",
@@ -8,16 +8,25 @@
     "htmlparser": ">= 1.6.2",
     "nodeunit": ">= 0.3.0",
     "hapi": "~1.8.1",
-    "handlebars": "~1.0.12",
     "mongoose": "~3.6.13",
     "mailchimp": "~1.1.0",
     "cron": "~1.0.1",
     "time": "~0.9.2",
-    "keys": "git+ssh://git@github.com:diasdavid/keys.bolsastecni.co.git"
+    "brfs": "0.0.8",
+    "bunyan": "~0.22.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "~0.7.10",
+    "colors": "~0.6.2",
+    "gaze": "~0.4.3",
+    "browserify": "~3.18.0",
+    "brfs": "0.0.8"
+  },
   "scripts": {
-    "test": "node server.js"
+    "start": "node serverApp/index.js",
+    "mon": "node_modules/.bin/nodemon serverApp/index.js",
+    "dist": "node_modules/.bin/browserify -t brfs --debug -e lib/js/bolsas.js -o public/js/bolsas.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "git@github.com:diasdavid/bolsastecni.co.git",
   "keywords": [
