@@ -1,6 +1,8 @@
 bolsas.istecni.co
 ==============
 
+![logo](assets/branding/logo/black-on-transparent.png)
+
 A information retrieval system for the IST, UTL student to get notified about new scholarships that are available.
 
 ## Idea behind this project
@@ -100,6 +102,7 @@ $ npm run mon
 $ chmod +x bin/watch.js
 ```
 
+then
 ```bash
 $ bin/watch.js
 ```
