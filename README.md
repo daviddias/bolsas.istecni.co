@@ -1,21 +1,29 @@
 bolsas.istecni.co
 ==============
 
-A information retrieval system for IST, UTL student get notified about new scholarships that are available
+A information retrieval system for the IST, UTL student to get notified about new scholarships that are available.
 
-Idea behind this project
+## Idea behind this project
 
-#1 How to Contribute
-FORK
-#1.1 Set up your machine
-#1.2 Commit
-#1.3 PULL REQUEST 
+
+
+## How to Contribute
+1.1 fork
+1.2 Set up your machine
+1.3 Commit
+1.4 Submit a pull request
 
 
 
 
 
 ## Development
+
+Install the necessary dependencies
+```bash
+$ npm install 
+```
+
 
 When you change .js files in ./lib, run browserify by:
 ```bash
