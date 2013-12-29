@@ -1,3 +1,4 @@
 #Modules
 node_modules
 serverApp/secrets.json
+.DS_Store
