@@ -51,7 +51,7 @@ It all started....
 
 ### Twitter bootstrap
 * [bootstrap](http://getbootstrap.com/)
-* [boostrap, responsible web development](https://github.com/whyisjake/bootstrap)
+* [boostrap, responsive web development](https://github.com/whyisjake/bootstrap)
 
 
 
