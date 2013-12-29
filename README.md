@@ -5,12 +5,15 @@ A information retrieval system for the IST, UTL student to get notified about ne
 
 ## Idea behind this project
 
-
+It all started....
 
 ## How to Contribute
 1.1 fork
+
 1.2 Set up your machine
+
 1.3 Commit
+
 1.4 Submit a pull request
 
 
