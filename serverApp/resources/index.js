@@ -1,0 +1,1 @@
+exports.scholarships = require('./scholarships.js');
