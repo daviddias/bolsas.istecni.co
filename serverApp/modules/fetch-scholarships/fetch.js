@@ -26,10 +26,10 @@ function parseScholarships(html, cb) {
             type: scholarship[1],
             holder: scholarship[2],
             link: scholarship[3],
-            scholarid: scholarship[4],
+            scholarshipId: scholarship[4],
             field: scholarship[5],
-            releaseDate: scholarship[6],
-            closeDate: scholarship[7],
+            releaseDate: new Date(scholarship[6].split('.')[2],scholarship[6].split('.')[1],scholarship[6].split('.')[0]),
+            closeDate: new Date(scholarship[7].split('.')[2],scholarship[7].split('.')[1],scholarship[7].split('.')[0]),
             active : true
           });
         }
@@ -41,6 +41,8 @@ function parseScholarships(html, cb) {
 
   cb(null, scholarshipList);
 }
+
+// var date = new Date(79,5,24) YY,MM,DD
 
 var fetch = {
   run: function (cb) {
@@ -75,9 +77,9 @@ var fetch = {
 module.exports = fetch;
 
 // Just to test it out
-// fetch.run(function(err, scholarshipList){
-//   if(err) {
-//     return console.log(err);
-//   }
-//   console.log(scholarshipList);
-// });
+fetch.run(function(err, scholarshipList){
+  if(err) {
+    return console.log(err);
+  }
+  console.log(scholarshipList);
+});

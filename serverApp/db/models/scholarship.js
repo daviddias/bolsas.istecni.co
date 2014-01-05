@@ -6,7 +6,7 @@ var scholarshipSchema = new mongoose.Schema({
   holder: String,
   link: String,
   id: {type: String, unique: true}, // our unique ID
-  scholarid: String,
+  scholarshipId: String,
   field: String,
   releaseDate: Date, // var date = new Date(79,5,24) YY,MM,DD
   closeDate: Date,
@@ -20,7 +20,6 @@ scholarshipSchema.statics.findByScholarshipId = function (scholarshipId, cb) {
 scholarshipSchema.statics.findAll = function (cb) {
   this.find({},cb);
 };
-
  
 var Scholarship = module.exports = mongoose.model('Scholarship', scholarshipSchema);
 

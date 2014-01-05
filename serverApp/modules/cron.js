@@ -1,8 +1,8 @@
 // RUN EVERY WEEK DAY
 
-var cronJob = require('cron').CronJob
-  , fetch = require('./../controllers/fetch.js')
-  , emailUpdate = require('./../controllers/mailchimp.js');
+var cronJob = require('cron').CronJob;
+var fetch = require('./fetch-scholarships');
+// var emailUpdate = require('./../controllers/mailchimp.js');
 
 
 var fetchDaily = function(){
