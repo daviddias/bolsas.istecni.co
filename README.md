@@ -110,3 +110,11 @@ then
 $ bin/watch.js
 ```
 
+
+---------
+## API
+
+```
+GET /scholarships                       // Get all the scholarships
+GET /scholarships?param1=a&param2=b...  // example active=true
+```
