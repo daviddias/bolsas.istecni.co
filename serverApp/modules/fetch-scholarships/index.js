@@ -1,1 +1,1 @@
-module.exports = require('./fetch/js')
+module.exports = require('./fetch.js')

@@ -77,9 +77,9 @@ var fetch = {
 module.exports = fetch;
 
 // Just to test it out
-fetch.run(function(err, scholarshipList){
-  if(err) {
-    return console.log(err);
-  }
-  console.log(scholarshipList);
-});
+// fetch.run(function(err, scholarshipList){
+//   if(err) {
+//     return console.log(err);
+//   }
+//   console.log(scholarshipList);
+// });

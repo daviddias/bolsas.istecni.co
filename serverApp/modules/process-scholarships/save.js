@@ -1,20 +1,33 @@
-var Scholarship = require('./../../db/models/scholarship.js');
+var Scholarship     = require('./../../db/models/scholarship.js');
+var scholarshipuuid = require('./../scholarshipuuid.js');
+var logger          = require('./../logger.js');
 
 var save = module.exports = function(scholarshipList) {
 
-  scholarshipList.forEach( function (rawScholarship) {
-    // 1. Calculate the ID
-    
+  scholarshipList.forEach(function (rawScholarship) {
+    var id = scholarshipuuid(rawScholarship.scholarshipId, rawScholarship.releaseDate);
 
-
-    // 2. See if exists
     Scholarship.findByScholarshipId(id, function (err, scholarship){
+      if (err) {
+        logger.error(err);
+      }  
 
+      if (!scholarship[0]) { // new scholarship
+        var newScholarship = new Scholarship();
+
+        newScholarship.id             = id;
+        newScholarship.slots          = rawScholarship.slots;
+        newScholarship.type           = rawScholarship.type;
+        newScholarship.holder         = rawScholarship.holder;
+        newScholarship.link           = rawScholarship.link;
+        newScholarship.scholarshipId  = rawScholarship.scholarshipId;
+        newScholarship.field          = rawScholarship.field;
+        newScholarship.releaseDate    = rawScholarship.releaseDate
+        newScholarship.closeDate      = rawScholarship.closeDate;
+        newScholarship.active         = rawScholarship.active
+
+        newScholarship.save();
+      } 
     });
   });
-
-
-
-  // for each scholarship, check if exits, if so, skip, if not, add new one
-
 }

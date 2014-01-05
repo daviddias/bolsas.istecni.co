@@ -7,6 +7,7 @@ mongo_url = process.env.MONGOURL || 'mongodb://localhost/bolsas_dev';
 require('./models/scholarship');
 
 module.exports = function() {
+  logger.info("Connecting to MongoDB on: " + mongo_url);
   mongoose.connect(mongo_url);
   var db = mongoose.connection;
   
