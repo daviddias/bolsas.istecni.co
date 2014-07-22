@@ -17,7 +17,6 @@ server.start(function () {
 // Start the scheduler
 // scheduler.fetchDaily();
 // scheduler.mailWeekly();
-// fetch.run();
 // fetch.cleanInactive();
 
 
@@ -27,6 +26,6 @@ fetch.run(function(err, scholarshipList){
   if(err) {
     return console.log(err);
   }
-  // console.log(scholarshipList);
+  console.log(scholarshipList);
   save(scholarshipList);
 });

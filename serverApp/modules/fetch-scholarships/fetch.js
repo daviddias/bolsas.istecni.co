@@ -47,7 +47,7 @@ function parseScholarships(html, cb) {
 var fetch = {
   run: function (cb) {
     var options = {
-      hostname: 'drh.ist.utl.pt',
+      hostname: 'drh.tecnico.ulisboa.pt',
       port: 80,
       path: '/bolseiros/recrutamento/',
       method: 'GET'
@@ -58,10 +58,12 @@ var fetch = {
 
       var html = '';
       res.on('data', function (chunk) {
+          console.log(chunk);
         html = html + chunk;
       });
 
       res.on('end', function () {
+          console.log(html);
         parseScholarships(html, cb);
       });
     });
