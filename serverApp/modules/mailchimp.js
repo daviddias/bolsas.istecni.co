@@ -21,8 +21,6 @@ var createCampaign = function () {
 
 
   allScholarshipsHtml(function(section) {
-      console.log(section);
-
       mc.campaigns.create({
           type: 'regular',
           options: {
@@ -37,6 +35,15 @@ var createCampaign = function () {
                   "scholarship": section
               }
           }
+      }, function(data) {
+          console.log(data);
+          mc.campaigns.send({"cid": data.id}, function(error) {
+              if(error.error)
+                  console.log("Error sending campaign!");
+          });
+      }, function(error) {
+          if(error.error)
+              console.log("Error creating campaign!");
       });
   });
 };
