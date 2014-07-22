@@ -28,8 +28,8 @@ function parseScholarships(html, cb) {
             link: scholarship[3],
             scholarshipId: scholarship[4],
             field: scholarship[5],
-            releaseDate: new Date(scholarship[6].split('.')[2],scholarship[6].split('.')[1],scholarship[6].split('.')[0]),
-            closeDate: new Date(scholarship[7].split('.')[2],scholarship[7].split('.')[1],scholarship[7].split('.')[0]),
+            releaseDate: new Date(scholarship[6].split('.')[2],scholarship[6].split('.')[1]-1,scholarship[6].split('.')[0]),
+            closeDate: new Date(scholarship[7].split('.')[2],scholarship[7].split('.')[1]-1,scholarship[7].split('.')[0]),
             active : true
           });
         }
@@ -58,12 +58,10 @@ var fetch = {
 
       var html = '';
       res.on('data', function (chunk) {
-          console.log(chunk);
         html = html + chunk;
       });
 
       res.on('end', function () {
-          console.log(html);
         parseScholarships(html, cb);
       });
     });

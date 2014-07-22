@@ -9,12 +9,13 @@
     "nodeunit": ">= 0.3.0",
     "hapi": "~6.2.0",
     "mongoose": "~3.8.13",
-    "mailchimp": "~1.1.0",
+    "mailchimp-api": "~2.0.6",
     "cron": "~1.0.4",
     "time": "~0.11.0",
     "brfs": "1.1.2",
     "bunyan": "~0.23.1",
-    "joi": "~4.6.1"
+    "joi": "~4.6.1",
+    "moment": "~2.7.0"
   },
   "devDependencies": {
     "nodemon": "~1.2.1",

@@ -1,5 +1,5 @@
 var Hapi      = require('hapi');
-// var scheduler = require('./modules/cron.js');
+var scheduler = require('./modules/cron.js');
 require('./db')();
 var fetch     = require('./modules/fetch-scholarships');
 var save      = require('./modules/process-scholarships');
@@ -15,9 +15,11 @@ server.start(function () {
 
 
 // Start the scheduler
-// scheduler.fetchDaily();
-// scheduler.mailWeekly();
-// fetch.cleanInactive();
+scheduler.fetchDaily();
+scheduler.mailWeekly();
+/*
+ *fetch.cleanInactive();
+ */
 
 
 // Testing

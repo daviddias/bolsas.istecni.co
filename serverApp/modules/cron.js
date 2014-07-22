@@ -2,7 +2,8 @@
 
 var cronJob = require('cron').CronJob;
 var fetch = require('./fetch-scholarships');
-// var emailUpdate = require('./../controllers/mailchimp.js');
+var save = require('./process-scholarships');
+var emailUpdate = require('./mailchimp.js');
 
 
 var fetchDaily = function(){
@@ -10,7 +11,13 @@ var fetchDaily = function(){
     var job = new cronJob({
       cronTime: '00 30 11 * * 1-5',
       onTick: function() {
-        fetch.run();
+          fetch.run(function(err, scholarshipList) {
+              if(err) {
+                  return console.log(err);
+              }
+              console.log(scholarshipList);
+              save(scholarshipList);
+          });
         console.log('FETCH DONE DAILY');
       },
       start: false, // to start after creation
@@ -24,7 +31,7 @@ var fetchDaily = function(){
 var mailWeekly = function(){
   try {
     var job = new cronJob({
-      cronTime: '00 30 11 * * 7',
+      cronTime: '00 30 11 * * 0',
       onTick: function() {
         // Runs every Sunday at 11:30:00 AM.
         emailUpdate();

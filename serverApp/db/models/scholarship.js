@@ -20,7 +20,11 @@ scholarshipSchema.statics.findByScholarshipId = function (scholarshipId, cb) {
 scholarshipSchema.statics.findAll = function (cb) {
   this.find({},cb);
 };
- 
+
+scholarshipSchema.statics.findActive = function (cb) {
+    this.find({ active: true },cb);
+};
+
 var Scholarship = module.exports = mongoose.model('Scholarship', scholarshipSchema);
 
 
