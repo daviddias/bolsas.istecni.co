@@ -15,7 +15,12 @@
     "brfs": "1.1.2",
     "bunyan": "~0.23.1",
     "joi": "~4.6.1",
-    "moment": "~2.7.0"
+    "moment": "~2.7.0",
+    "ampersand-model": "~3.0.4",
+    "ampersand-rest-collection": "~1.1.1",
+    "ampersand-view": "~6.0.8",
+    "getconfig": "~0.3.0",
+    "moonboots_hapi": "~2.4.0"
   },
   "devDependencies": {
     "nodemon": "~1.2.1",
