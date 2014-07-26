@@ -11,8 +11,8 @@ module.exports = AmpersandModel.extend({
         link: ['string', true, ''],
         scholarshipId: ['string', true, ''],
         field: ['string', true, ''],
-        releaseDate: ['date', true, ''],
-        closeDate: ['date', true, ''],
+        releaseDate: ['string', true, ''],
+        closeDate: ['string', true, ''],
         active: ['boolean', true, 'true']
     },
     derived: {
