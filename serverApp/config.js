@@ -1,4 +1,5 @@
 var config = require('getconfig');
+var templatizer = require('templatizer');
 
 var appDir = __dirname + '/../clientApp';
 var cssDir = __dirname + '/public/css';
@@ -19,8 +20,15 @@ module.exports = {
 
         stylesheets: [
             cssDir + '/vendor/bootstrap-3.0.3-dist/bootstrap.css',
+            cssDir + '/vendor/bootstrap-3.0.3-dist/bootstrap-theme.css',
             cssDir + '/app.css'
         ],
+        
+        beforeBuildJS: function() {
+            if(config.isDev) {
+                templatizer(__dirname + '/../clientApp/templates', appDir + '/templates.js');
+            }
+        },
 
         beforeBuildCss: function(done) {
             if(!config.isDev) {

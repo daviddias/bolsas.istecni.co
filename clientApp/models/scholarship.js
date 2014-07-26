@@ -1,8 +1,8 @@
 var AmpersandModel = require('ampersand-model');
 
-module.exports = AmpersandMode.extend({
-    type: 'scholarship',
+module.exports = AmpersandModel.extend({
     props: {
+        id: 'any',
         field: ['string', true, ''],
         slots: ['string', true, ''],
         type: ['string', true, ''],
@@ -12,6 +12,6 @@ module.exports = AmpersandMode.extend({
         field: ['string', true, ''],
         releaseDate: ['date', true, ''],
         closeDate: ['date', true, ''],
-        active: ['boolean', true, '']
+        active: ['boolean', true, 'true']
     }
 });
