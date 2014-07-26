@@ -50,6 +50,12 @@ footer {
     line-height: 30px;
 
 }
+
 .fields {
     font-weight: bold;
 }
+
+.search {
+    margin-bottom: 10px;
+}
+
