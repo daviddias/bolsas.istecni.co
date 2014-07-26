@@ -4,7 +4,7 @@ var cronJob = require('cron').CronJob;
 var fetch = require('./fetch-scholarships');
 var save = require('./process-scholarships');
 var emailUpdate = require('./mailchimp.js');
-
+var markInactive = require('./markInactive.js');
 
 var fetchDaily = function(){
   try {
@@ -17,6 +17,7 @@ var fetchDaily = function(){
               }
               console.log(scholarshipList);
               save(scholarshipList);
+              markInactive();
           });
         console.log('FETCH DONE DAILY');
       },
