@@ -1,5 +1,6 @@
 var Router = require('ampersand-router');
 var ScholarshipsPage = require('./pages/scholarships');
+var InactiveScholarshipsPage = require('./pages/inactivescholarships');
 
 module.exports = Router.extend({
     routes: {
@@ -15,7 +16,8 @@ module.exports = Router.extend({
     },
 
     inactiveScholarships: function() {
-        this.trigger('newPage', new ScholarshipsPage({
+        this.trigger('newPage', new InactiveScholarshipsPage({
+            collection: app.scholarships
         }));
     }
 
