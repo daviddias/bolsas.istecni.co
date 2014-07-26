@@ -48,14 +48,13 @@ module.exports = View.extend({
 
     updateActiveNav: function() {
         var pathname = window.location.pathname;
-        $('.nav a').each(function() {
-            var navArray = _.compact($(this).attr('href').split('/').join('/').toLowerCase());
-            var pathArray = _.compact(pathname.split('/')).join('/').toLowerCase();
+        $('.nav-control a').each(function() {
+            var navArray = $(this).attr('href');
 
-            if(pathArray === navArray) {
-                $(this).parent().addClass('active');
+            if(pathname === navArray) {
+                $(this).addClass('active');
             } else {
-                $(this).parent().removeClass('active');
+                $(this).removeClass('active');
             }
         });
     }
