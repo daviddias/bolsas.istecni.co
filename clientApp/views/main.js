@@ -17,7 +17,7 @@ module.exports = View.extend({
 
         this.pageSwitcher = new ViewSwitcher(this.getByRole('page-container'), {
             show: function(newView, oldView) {
-                document.title = _.result(newView.pageTitle);
+                document.title = _.result(newView.pageTitle) || "bolsas.tecni.co";
                 document.scrollTop = 0;
 
                 newView.el.classList.add('active');

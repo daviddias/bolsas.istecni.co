@@ -20,7 +20,7 @@
 
     // head.jade compiled template
     templatizer["head"] = function tmpl_head() {
-        return "<title>bolsastecni.co</title>";
+        return "<title>bolsas.tecni.co</title>";
     };
 
     // includes/scholarship.jade compiled template
