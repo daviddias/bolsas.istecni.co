@@ -15,7 +15,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><main id="pages" role="page-container"><div id="homeModal"><nav role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="container"><div class="navbar-header"><button data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#home" class="navbar-brand">bolsas.istecni.co</a></div><div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav"><li><a href="#about">About</a></li></ul></div></div></nav><div class="container"><div class="row"><div class="col-md-3"><p class="lead">Scholarships</p><div class="list-group"><a href="#" class="list-group-item">Active</a><a href="#" class="list-group-item">Past</a><p class="list-group-item">SEARCH BOX HERE</p></div><div class="thumbnail"><div class="caption"><h4>Get notified</h4><p>If you want to get notifications</p></div></div></div><div class="col-md-9"><div class="row"><div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="caption"><h4>{{scholarship.field}}</h4><p>{{scholarship.slots}}</p><p>{{scholarship.holder}}</p><p>{{scholarship.link}}</p><p>{{scholarship.scholarshipId}}</p><p>{{scholarship.releaseDate}}</p><p>{{scholarship.closeDate}}</p><p>{{scholarship.active}}</p></div></div></div></div></div></div></div></div><div class="container"><hr/><footer><div class="row"><div class="col-lg-12"><p>This is a open source project made in IST, check more at<a href="https://github.com/ISTecnico">https:github.com/ISTecnico</a></p></div></div></footer></div></main></body>';
+        return '<body><nav role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="container"><div class="navbar-header"><button data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#home" class="navbar-brand">bolsas.istecni.co</a></div><div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav"><li><a href="#about">About</a></li></ul></div></div></nav><main id="pages" role="page-container"></main><div class="container"><hr/><footer><div class="row"><div class="col-lg-12"><p>This is a open source project made in IST, check more at<a href="https://github.com/ISTecnico">https:github.com/ISTecnico</a></p></div></div></footer></div></body>';
     };
 
     // head.jade compiled template
@@ -23,9 +23,14 @@
         return "<title>bolsastecni.co</title>";
     };
 
+    // includes/scholarship.jade compiled template
+    templatizer["includes"]["scholarship"] = function tmpl_includes_scholarship() {
+        return '<div class="row"><div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="caption"><h4 role="field"></h4><a role="link"></a><br/><span class="fields">Slots: </span><span role="slots"></span><br/><span class="fields">Holder: </span><span role="holder"></span><br/><span class="fields">Field: </span><span role="type"></span><br/><span class="fields">Release Date: </span><span role="release-date"></span><br/><span class="fields">Close Date: </span><span role="close-date"></span><br/></div></div></div></div>';
+    };
+
     // pages/home.jade compiled template
     templatizer["pages"]["home"] = function tmpl_pages_home() {
-        return "<h1>bolsas tecnico!</h1>";
+        return '<div class="container"><div class="row"><div class="col-md-3"><p class="lead">Scholarships</p><div class="list-group"><a href="#" class="list-group-item">Active</a><a href="#" class="list-group-item">Past</a><p class="list-group-item">SEARCH BOX HERE</p></div><div class="thumbnail"><div class="caption"><h4>Get notified</h4><p>If you want to get notifications</p></div></div></div><div role="scholarships" class="col-md-9"></div></div></div>';
     };
 
     return templatizer;

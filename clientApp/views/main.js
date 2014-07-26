@@ -55,7 +55,7 @@ module.exports = View.extend({
             if(pathArray === navArray) {
                 $(this).parent().addClass('active');
             } else {
-                $(this).parent().removeClas('active');
+                $(this).parent().removeClass('active');
             }
         });
     }

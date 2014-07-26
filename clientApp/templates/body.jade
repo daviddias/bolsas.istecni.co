@@ -1,50 +1,24 @@
 body
-    main#pages(role="page-container")
-        #homeModal
-            nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-                .container
-                    .navbar-header
-                        button.navbar-toggle(data-target='.navbar-ex1-collapse', data-toggle='collapse', type='button')
-                            span.sr-only Toggle navigation
-                            span.icon-bar
-                            span.icon-bar
-                            span.icon-bar
-                        a.navbar-brand(href='#home') bolsas.istecni.co
-                    .collapse.navbar-collapse.navbar-ex1-collapse
-                        ul.nav.navbar-nav
-                            li
-                                a(href='#about') About
-            .container
-                .row
-                    .col-md-3
-                        p.lead Scholarships
-                        .list-group
-                            a.list-group-item(href='#') Active
-                            a.list-group-item(href='#') Past
-                            p.list-group-item SEARCH BOX HERE
-                        .thumbnail
-                            .caption
-                                h4 Get notified
-                                p If you want to get notifications
-                    .col-md-9
-                        .row
-                            .col-sm-12.col-lg-12.col-md-12
-                                .thumbnail
-                                    .caption
-                                        h4 {{scholarship.field}}
-                                        p {{scholarship.slots}}
-                                        p {{scholarship.holder}}
-                                        p {{scholarship.link}}
-                                        p {{scholarship.scholarshipId}}
-                                        p {{scholarship.releaseDate}}
-                                        p {{scholarship.closeDate}}
-                                        p {{scholarship.active}}
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
         .container
-            hr
-            footer
-                .row
-                    .col-lg-12
-                        p
-                            | This is a open source project made in IST, check more at
-                            a(href='https://github.com/ISTecnico') https:github.com/ISTecnico
+            .navbar-header
+                button.navbar-toggle(data-target='.navbar-ex1-collapse', data-toggle='collapse', type='button')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='#home') bolsas.istecni.co
+            .collapse.navbar-collapse.navbar-ex1-collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href='#about') About
+    main#pages(role="page-container")
+    .container
+        hr
+        footer
+            .row
+                .col-lg-12
+                    p
+                        | This is a open source project made in IST, check more at
+                        a(href='https://github.com/ISTecnico') https:github.com/ISTecnico
 

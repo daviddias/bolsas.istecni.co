@@ -1,5 +1,5 @@
 var Router = require('ampersand-router');
-var ScholarshipsPage = require('./pages/home');
+var ScholarshipsPage = require('./pages/scholarships');
 
 module.exports = Router.extend({
     routes: {

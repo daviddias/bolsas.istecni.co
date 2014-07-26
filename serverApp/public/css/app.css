@@ -45,3 +45,11 @@ body {
 footer {
   margin: 50px 0;
 }
+
+.caption {
+    line-height: 30px;
+
+}
+.fields {
+    font-weight: bold;
+}
